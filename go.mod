@@ -1,4 +1,4 @@
-module github.com/isaialcantara/ii
+module github.com/isaialcantara/i
 
 go 1.22.5
 
