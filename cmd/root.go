@@ -3,6 +3,7 @@ package cmd
 import (
 	"os"
 
+	"github.com/isaialcantara/i/cmd/gen"
 	"github.com/spf13/cobra"
 )
 
@@ -20,4 +21,5 @@ func Execute() {
 }
 
 func init() {
+	rootCmd.AddCommand(gen.Cmd)
 }
