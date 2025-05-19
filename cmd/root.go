@@ -7,19 +7,26 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "i",
-	Short: "Isai's Swiss Army Knife.",
-	Long:  `A collection of tools useful for software development. Well, at least useful to me.`,
+type App struct {
+	rootCmd *cobra.Command
 }
 
-func Execute() {
-	err := rootCmd.Execute()
+func NewApp() *App {
+	app := &App{
+		rootCmd: &cobra.Command{
+			Use:   "i",
+			Short: "Isai's Swiss Army Knife.",
+			Long:  `A collection of tools useful for software development. Well, at least useful to me.`,
+		},
+	}
+
+	app.rootCmd.AddCommand(gen.GenCmd())
+	return app
+}
+
+func (a *App) Execute() {
+	err := a.rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
 	}
-}
-
-func init() {
-	rootCmd.AddCommand(gen.Cmd)
 }

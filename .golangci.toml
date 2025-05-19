@@ -1,0 +1,43 @@
+version = '2'
+
+[linters]
+enable = [
+  'asciicheck',
+  'bidichk',
+  'copyloopvar',
+  'decorder',
+  'err113',
+  'errname',
+  'funcorder',
+  'gochecknoglobals',
+  'gocognit',
+  'gocritic',
+  'iface',
+  'inamedparam',
+  'ireturn',
+  'nonamedreturns',
+  'prealloc',
+  'predeclared',
+  'sloglint',
+  'testifylint',
+  'unconvert',
+  'unparam',
+]
+
+[linters.settings]
+govet = { enable-all = true }
+gocritic = { enable-all = true }
+testifylint = { enable-all = true }
+
+[linters.exclusions]
+generated = 'lax'
+presets = ['comments', 'common-false-positives', 'legacy', 'std-error-handling']
+paths = ['third_party$', 'builtin$', 'examples$']
+
+[formatters]
+enable = ['gofumpt']
+settings = { gofumpt = { extra-rules = true } }
+
+[formatters.exclusions]
+generated = 'lax'
+paths = ['third_party$', 'builtin$', 'examples$']
